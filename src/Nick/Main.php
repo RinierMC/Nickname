@@ -14,12 +14,12 @@ use pocketmine\utils\Config;
 
 class Main extends PluginBase implements Listener {
     
-    public function onEnable() {
+    public function onEnable() : void{
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->getServer()->getCommandMap()->register("nickname", new NickCmd("nickname", $this));
     }
     
-    public function onJoin(PlayerJoinEvent $e) {
+    public function onJoin(PlayerJoinEvent $e) : void{
         $p = $e->getPlayer();
         $nicks = new Config($this->getDataFolder()."nicks.yml", Config::YAML, [strtolower($p->getName()) => $p->getName()]);
         $nicks->save();
@@ -33,7 +33,7 @@ class Main extends PluginBase implements Listener {
         }
     }
     
-    public function onQuit(PlayerQuitEvent $e) {
+    public function onQuit(PlayerQuitEvent $e) : void{
         $p = $e->getPlayer();
         $nicks = new Config($this->getDataFolder()."nicks.yml", Config::YAML, [strtolower($p->getName()) => $p->getName()]);
         $nicks->save();
