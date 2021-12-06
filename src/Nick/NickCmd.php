@@ -51,21 +51,21 @@ class NickCmd extends PluginCommand{
             $sender->sendMessage("§l§7(§a!§7) §r§aYou cannot use this nickname!");
             return false;
         }
-		if ($args[0] == "clear" || $args[0] == "remove") {
-			$nicks = new Config($this->plugin->getDataFolder() . strtolower($sender->getName()) . ".yml", Config::YAML);
-			$nicks->set($sender->getName(), $sender->getName());
-			$nicks->save();
+        if ($args[0] == "clear" || $args[0] == "remove") {
+	    $nicks = new Config($this->plugin->getDataFolder() . strtolower($sender->getName()) . ".yml", Config::YAML);
+	    $nicks->set($sender->getName(), $sender->getName());
+            $nicks->save();
             $sender->setDisplayName($sender->getName());
             $sender->setNameTag($sender->getName());
             $sender->sendMessage("§l§7(§a!§7) §r§aYour Nick Have Been Removed");
             return true;
         }
-		$nicks = new Config($this->plugin->getDataFolder()."nicks.yml", Config::YAML);
-	    $nicks->set($sender->getName(), $args[0]."*§r");
-	    $nicks->save();
+	$nicks = new Config($this->plugin->getDataFolder()."nicks.yml", Config::YAML);
+        $nicks->set($sender->getName(), $args[0]."*§r");
+        $nicks->save();
         $sender->setDisplayName($args[0] . "*§r");
         $sender->setNameTag($args[0] . "*§r§d");
         $sender->sendMessage("§l§7(§a!§7) §r§aYour Nick Has Been Set To ".$args[0]);
-		return true;
+        return true;
     }
 }
