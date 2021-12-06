@@ -31,6 +31,10 @@ class NickCmd extends PluginCommand{
 	      	$sender->sendMessage("§cYou do not have permission");
             return false;
         }
+        if (!$sender instanceof Player) {
+            $sender->sendMessage("You Cannot Run This Command Here!");
+            return false
+        }
         if (count($args) < 1) {
 			$sender->sendMessage("§l§7(§a!§7) §r§eUsage: §a/nickname <name|remove>");
             return false;
