@@ -33,7 +33,7 @@ class NickCmd extends PluginCommand{
         }
         if (!$sender instanceof Player) {
             $sender->sendMessage("You Cannot Run This Command Here!");
-            return false
+            return false;
         }
         if (count($args) < 1) {
 			$sender->sendMessage("§l§7(§a!§7) §r§eUsage: §a/nickname <name|remove>");
